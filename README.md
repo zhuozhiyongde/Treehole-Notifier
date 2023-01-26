@@ -110,7 +110,7 @@ Github Access Token 是为了使用 git 来更新监视状态（也即 `watch_li
 
 6. 复制你的 `ACCESS_TOKEN`，并参照先前的步骤存入你的 `Repo secrets` ，注意名称一定要保持为 `ACCESS_TOKEN`
 
-**调整 Action Gernal**
+**调整 Action General**
 
 按照如下步骤调整：
 

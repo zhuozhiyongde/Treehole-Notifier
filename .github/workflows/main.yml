@@ -9,10 +9,9 @@ jobs:
     - uses: actions/checkout@v3
     - name: update
       run : python3 TreeholeNotifier.py ${{ secrets.UID }} ${{ secrets.PASSWORD }}
-    timeout-minutes: 5
-  push:
-    if: update success
+      continue-on-error: true
     - name: push
+      if  : success()
       run : |
         git config --global user.email "zhuozhiyongde@126.com"
         git config --global user.name "Arthals"
@@ -24,3 +23,4 @@ jobs:
         github_token: ${{secrets.ACCESS_TOKEN}}
     - name: notify mobile
       run : exit 1
+    timeout-minutes: 5

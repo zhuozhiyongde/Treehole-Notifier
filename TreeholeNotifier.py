@@ -358,7 +358,7 @@ if __name__ == "__main__":
     # get uid and password from args
     if (len(sys.argv) != 3):
         print("Usage: python3 treehole_updater.py uid password")
-        exit(1)
+        exit(0)
     uid = sys.argv[1]
     password = sys.argv[2]
 

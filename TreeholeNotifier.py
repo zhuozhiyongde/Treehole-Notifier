@@ -358,7 +358,7 @@ if __name__ == "__main__":
     # get uid and password from args
     if (len(sys.argv) != 3):
         print("Usage: python3 treehole_updater.py uid password")
-        exit(1)
+        print(False)
     uid = sys.argv[1]
     password = sys.argv[2]
 
@@ -372,7 +372,7 @@ if __name__ == "__main__":
     keywords_update_list = updater.check_update_with_keywords()
     if (len(treehole_update_list) == 0 and len(keywords_update_list) == 0):
         log("No update")
-        exit(1)
+        print(False)
     else:
         log("Update detected")
-        exit(0)
+        print(True)

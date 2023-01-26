@@ -7,22 +7,22 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: update
-      run : python3 TreeholeNotifier.py ${{ secrets.UID }} ${{ secrets.PASSWORD }}
-      continue-on-error: true
-    - name: test
-      if  : failure()
-      run : echo "error"
+      run : |
+        UPDATE_RESULT=$(python3 TreeholeNotifier.py ${{ secrets.UID }} ${{ secrets.PASSWORD }} | tail -1)
+        echo "UPDATE_RESULT=$UPDATE_RESULT" >> $GITHUB_ENV
     - name: init git local
-      if  : success()
+      if  : ${{env.UPDATE_RESULT}} == TRUE
       run : |
         git config --global user.email "zhuozhiyongde@126.com"
         git config --global user.name "Arthals"
         git add .
         git commit -m "update" -a
     - name: push changes
+      if  : ${{env.UPDATE_RESULT}} == TRUE
       uses: ad-m/github-push-action@master
       with:
         github_token: ${{secrets.ACCESS_TOKEN}}
     - name: notify mobile
+      if  : ${{env.UPDATE_RESULT}} == TRUE
       run : exit 1
     timeout-minutes: 5

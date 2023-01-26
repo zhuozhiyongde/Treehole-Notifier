@@ -1,15 +1,18 @@
 name: updater
 on:
   schedule:
-  - cron: '10/10 * * * *'
+  - cron: '10/30 * * * *'
 jobs:
-  build:
+  update:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
-    - name: init
-      run : python3 TreeholeNotifier.py ${{ secrets.UID }} ${{ secrets.PASSWORD }}
     - name: update
+      run : python3 TreeholeNotifier.py ${{ secrets.UID }} ${{ secrets.PASSWORD }}
+    timeout-minutes: 5
+  push:
+    if: update success
+    - name: push
       run : |
         git config --global user.email "zhuozhiyongde@126.com"
         git config --global user.name "Arthals"
@@ -19,6 +22,5 @@ jobs:
       uses: ad-m/github-push-action@master
       with:
         github_token: ${{secrets.ACCESS_TOKEN}}
-    - name: decide whether to notify
-      run : python3 MobileNotifier.py
-    timeout-minutes: 5
+    - name: notify mobile
+      run : exit 1

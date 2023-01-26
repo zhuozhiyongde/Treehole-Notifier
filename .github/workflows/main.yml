@@ -1,6 +1,7 @@
 name: updater
 on:
-  [push]
+  schedule:
+  - cron: "30 * * * *"
 jobs:
   update:
     runs-on: ubuntu-latest

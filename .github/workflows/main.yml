@@ -5,9 +5,9 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - name: init
     - uses: actions/checkout@v3
-    - run : python3 TreeholeNotifier.py ${{ secrets.UID }} ${{ secrets.PASSWORD }}
+    - name: init
+      run : python3 TreeholeNotifier.py ${{ secrets.UID }} ${{ secrets.PASSWORD }}
     - name: update
       run : |
         git config --global user.email "github-actions[bot]@users.noreply.github.com"

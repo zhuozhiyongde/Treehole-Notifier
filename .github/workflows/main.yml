@@ -8,9 +8,10 @@ jobs:
     - uses: actions/checkout@v3
     - name: update
       run : python3 TreeholeNotifier.py ${{ secrets.UID }} ${{ secrets.PASSWORD }}
+      continue-on-error: true
     - name: test
       if  : failure()
-      run : echo "erro"
+      run : echo "error"
     - name: init git local
       if  : success()
       run : |

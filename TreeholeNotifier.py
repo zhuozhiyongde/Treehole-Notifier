@@ -16,7 +16,7 @@ import re
 
 def log(*args):
     # trans args to string
-    msg = [str(arg) for arg in args].join(' ')
+    msg = ' '.join([str(arg) for arg in args])
     print(datetime.datetime.now(), '\t', msg)
 
 

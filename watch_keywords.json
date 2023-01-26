@@ -1,0 +1,14 @@
+{
+    "watch_keywords": [
+        {
+            "keyword": "ICS",
+            "ignore_pattern": false,
+            "last_hole": 4642133
+        },
+        {
+            "keyword": "pku",
+            "ignore_pattern": false,
+            "last_hole": 4641629
+        }
+    ]
+}

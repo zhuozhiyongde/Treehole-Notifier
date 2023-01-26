@@ -2,10 +2,12 @@
 
 Inspired by my INSANE ICS REFRESHER friend.
 
+一个利用 Github Actions 搭配 Github Mobile 实现北大树洞消息更新提醒的小工具。
+
 ## Process
 
 1. 运行 `TreeholeSpider.py` 以爬取树洞。
-2. 检运行查结果和已有结果的差异。
+2. 检查运行查结果和已有结果的差异。
 3. 将更新结果存储到 JSON 文件中。
 4. 通过 Github Actions 来定时执行上述流程
 5. 结果有更新时（此时自动触发了 git push），通过 Github Mobile 发送通知。

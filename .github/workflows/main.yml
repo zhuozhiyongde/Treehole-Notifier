@@ -1,0 +1,10 @@
+name: updater
+on:
+  schedule:
+  - cron: "0/10 * * * *"
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - run : python3 TreeholeNotifier.py

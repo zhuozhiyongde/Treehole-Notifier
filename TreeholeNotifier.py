@@ -368,5 +368,11 @@ if __name__ == "__main__":
     }
 
     updater = TreeholeUpdater(config)
-    updater.check_update()
-    updater.check_update_with_keywords()
+    treehole_update_list = updater.check_update()
+    keywords_update_list = updater.check_update_with_keywords()
+    if (len(treehole_update_list) == 0 and len(keywords_update_list) == 0):
+        log("No update")
+        exit(0)
+    else:
+        log("Update detected")
+        exit(1)

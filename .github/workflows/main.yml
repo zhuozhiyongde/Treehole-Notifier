@@ -11,7 +11,7 @@ jobs:
         UPDATE_RESULT=$(python3 TreeholeNotifier.py ${{ secrets.UID }} ${{ secrets.PASSWORD }} | tail -1)
         echo "UPDATE_RESULT=$UPDATE_RESULT" >> $GITHUB_ENV
         echo $UPDATE_RESULT
-    - name: init git local
+    - name: init git
       if  : ${{env.UPDATE_RESULT}}
       run : |
         echo ${{env.UPDATE_RESULT}}

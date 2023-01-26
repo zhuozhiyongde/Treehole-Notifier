@@ -54,11 +54,19 @@ Inspired by my INSANE ICS REFRESHER friend.
 
 
 
-### 配置 Github Actions Schedule Cron
+### 配置 Github Actions
+
+**配置 Schedule Cron**
 
 如果你想要自定义检查更新时间，请参照 [官方指引](https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#onschedule)，调整你的 `./github/workflows/main.yml` 第 4 行。
 
 默认配置为每小时的第 30 分钟进行一次检查。也即每天会总共进行 24 次检查。
+
+
+
+**配置 Git Config**
+
+请自行调整你的 `./github/workflows/main.yml` 第 19, 20 行。将 `git config` 中的 `user.email` 和 `user.name` 设为你自己的。
 
 
 

@@ -12,7 +12,7 @@ jobs:
         echo "UPDATE_RESULT=$UPDATE_RESULT" >> $GITHUB_ENV
         echo $UPDATE_RESULT
     - name: init git local
-      if  : ${{${{env.UPDATE_RESULT}}}}
+      if  : ${{env.UPDATE_RESULT}}
       run : |
         echo ${{env.UPDATE_RESULT}}
         git config --global user.email "zhuozhiyongde@126.com"
@@ -20,11 +20,11 @@ jobs:
         git add .
         git commit -m "update" -a
     - name: push changes
-      if  : ${{${{env.UPDATE_RESULT}}}}
+      if  : ${{env.UPDATE_RESULT}}
       uses: ad-m/github-push-action@master
       with:
         github_token: ${{secrets.ACCESS_TOKEN}}
     - name: notify mobile
-      if  : ${{${{env.UPDATE_RESULT}}}}
+      if  : ${{env.UPDATE_RESULT}}
       run : exit 1
     timeout-minutes: 5

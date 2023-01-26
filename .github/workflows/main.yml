@@ -9,7 +9,7 @@ jobs:
     - name: update
       run : python3 TreeholeNotifier.py ${{ secrets.UID }} ${{ secrets.PASSWORD }}
       continue-on-error: true
-    - name: init git
+    - name: init git local
       if  : success()
       run : |
         git config --global user.email "zhuozhiyongde@126.com"

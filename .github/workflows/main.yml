@@ -6,8 +6,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
-    - env:
-        UID: ${{ secrets.UID }}
-        PASSWORD: ${{ secrets.PASSWORD }}
-    - run : python3 TreeholeNotifier.py ${UID} ${PASSWORD}
+    - run : python3 TreeholeNotifier.py ${{ secrets.UID }} ${{ secrets.PASSWORD }}
     timeout-minutes: 5

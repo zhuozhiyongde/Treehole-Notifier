@@ -375,4 +375,5 @@ if __name__ == "__main__":
         exit(0)
     else:
         log("Update detected")
-        exit(1)
+        with open("flag.txt", "w") as f:
+            f.write("Higher Grade!")

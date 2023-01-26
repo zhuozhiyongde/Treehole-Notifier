@@ -11,8 +11,8 @@ jobs:
         UPDATE_RESULT=$(python3 TreeholeNotifier.py ${{ secrets.UID }} ${{ secrets.PASSWORD }} | tail -1)
         echo "UPDATE_RESULT=$UPDATE_RESULT" >> $GITHUB_ENV
         echo $UPDATE_RESULT
-    - name: init git
-      if  : ${{env.UPDATE_RESULT}}
+    - name: init git local
+      if  : ${{${{env.UPDATE_RESULT}}==1}}
       run : |
         echo ${{env.UPDATE_RESULT}}
         git config --global user.email "zhuozhiyongde@126.com"
@@ -20,11 +20,11 @@ jobs:
         git add .
         git commit -m "update" -a
     - name: push changes
-      if  : ${{env.UPDATE_RESULT}}
+      if  : ${{${{env.UPDATE_RESULT}}==1}}
       uses: ad-m/github-push-action@master
       with:
         github_token: ${{secrets.ACCESS_TOKEN}}
     - name: notify mobile
-      if  : ${{env.UPDATE_RESULT}}
+      if  : ${{${{env.UPDATE_RESULT}}==1}}
       run : exit 1
     timeout-minutes: 5

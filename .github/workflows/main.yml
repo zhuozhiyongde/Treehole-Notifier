@@ -13,6 +13,7 @@ jobs:
     - name: init git local
       if  : ${{env.UPDATE_RESULT}} == 'True'
       run : |
+        echo ${{env.UPDATE_RESULT}}
         git config --global user.email "zhuozhiyongde@126.com"
         git config --global user.name "Arthals"
         git add .

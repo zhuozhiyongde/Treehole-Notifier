@@ -1,6 +1,7 @@
 name: updater
 on:
-  [push]
+  schedule:
+  - cron: "30 * * * *"
 jobs:
   update:
     runs-on: ubuntu-latest
@@ -11,7 +12,6 @@ jobs:
         python3 TreeholeNotifier.py ${{ secrets.UID }} ${{ secrets.PASSWORD }} >> output.log
         cat output.log
         UPDATE_RESULT=$(tail -n1 output.log)
-        echo $UPDATE_RESULT
         echo "UPDATE_RESULT=$UPDATE_RESULT" >> $GITHUB_ENV
     - name: init git push
       if  : ${{ env.UPDATE_RESULT == 'true' }}

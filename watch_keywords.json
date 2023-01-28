@@ -1,9 +1,4 @@
 {
     "watch_keywords": [
-        {
-            "keyword": "ICS",
-            "ignore_pattern": false,
-            "last_hole": 4646143
-        }
     ]
 }

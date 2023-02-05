@@ -147,6 +147,7 @@ class TreeholeSpider:
             res = requests.get(url=comments_url,
                                headers=self.get_headers,
                                timeout=5)
+
             # Token Error
             if (res.status_code == 401):
                 log(
@@ -294,7 +295,12 @@ class TreeholeUpdater():
         updated_holes = []
         for hole in self.watch_list:
             tid = hole["tid"]
-            comments = self.spider.get_treehole_comments(tid)['data']
+            comments = self.spider.get_treehole_comments(tid)
+            if not comments:
+                continue
+
+            else:
+                comments = comments["data"]
             last_comment_timestamp = max(
                 [comment['timestamp'] for comment in comments])
             if last_comment_timestamp > hole["last_update"]:
@@ -327,6 +333,7 @@ class TreeholeUpdater():
         self.get_watch_keywords()
         updated_keywords = []
         for keyword in self.watch_keywords:
+            tid = None
             if keyword.get("ignore_pattern") is None:
                 tid = self.spider.search_keywords(keyword["keyword"])
 

@@ -296,11 +296,14 @@ class TreeholeUpdater():
         for hole in self.watch_list:
             tid = hole["tid"]
             comments = self.spider.get_treehole_comments(tid)
-            if not comments:
-                continue
+
+            if comments.get('data') is not None:
+                comments = comments['data']
 
             else:
-                comments = comments["data"]
+                print("no comments %d" % tid)
+                continue
+
             last_comment_timestamp = max(
                 [comment['timestamp'] for comment in comments])
             if last_comment_timestamp > hole["last_update"]:
